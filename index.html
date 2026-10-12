@@ -461,7 +461,6 @@
         pointer-events: auto;
       }
 
-
       .will-reveal {
         opacity: 0.01;
         transform: translateY(22px);
@@ -582,7 +581,7 @@
     <script>
       /* ---- Details to edit ---- */
       var CONFIG = {
-        venue: "Villa St 26, New Maadi, Cairo",
+        venue: "Villa 4 St 26, New Maadi, Cairo",
         mapsUrl: "https://maps.app.goo.gl/qBj1W3HFbCR57YDv9?g_st=iw",
         music: "music.mp3",
       };
@@ -593,7 +592,14 @@
          autoplay, the very first tap/click/key starts it with no wait ---- */
       (function () {
         var audio = document.getElementById("bgm");
-        var evts = ["pointerdown", "pointerup", "touchend", "click", "keydown", "wheel"];
+        var evts = [
+          "pointerdown",
+          "pointerup",
+          "touchend",
+          "click",
+          "keydown",
+          "wheel",
+        ];
         function unbind() {
           evts.forEach(function (e) {
             document.removeEventListener(e, kick, true);
