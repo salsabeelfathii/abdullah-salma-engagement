@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Abdullah & Salma Engagement</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Allura&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Layout: one phone-width invitation column: illustrated cover, date, then location over the garden scene */
+      :root {
+        --paper: #f4f6f1;
+        --paper-2: #eaeee5;
+        --ink: #2f4a3d;
+        --ink-soft: #5d7266;
+        --blush: #f8d7e1;
+        --rose: #e39ab3;
+        --stone: #a89f8d;
+        --line: #c9cdbf;
+        --stage: #dfe4d8;
+        --display: "Allura", "Snell Roundhand", "Brush Script MT", cursive;
+        --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+        color-scheme: light;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--stage);
+        color: var(--ink);
+        font-family: var(--serif);
+        font-size: 19px;
+        line-height: 1.5;
+        margin: 0;
+      }
+      .page {
+        max-width: 520px;
+        margin: 0 auto;
+        background: var(--paper);
+        overflow: hidden;
+        position: relative;
+      }
+      h1,
+      h2,
+      p {
+        margin: 0;
+      }
+      .eyebrow {
+        font-size: 0.85rem;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+      }
+      .script {
+        font-family: var(--display);
+        font-weight: 400;
+        color: var(--ink);
+        line-height: 1.05;
+      }
+
+      /* cover */
+      .cover {
+        position: relative;
+        aspect-ratio: 9/16;
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+        background: var(--paper-2);
+      }
+      .scene {
+        position: absolute;
+        inset: 0;
+        transform-origin: 50% 40%;
+        animation: settle 4s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+      }
+      .scene > img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      /* butterflies: hover in place like the video, plus one that flies across */
+      .bf {
+        position: absolute;
+        pointer-events: none;
+      }
+      .bf img {
+        display: block;
+        width: 100%;
+        height: auto;
+        transform-origin: 45% 85%;
+        animation: flap 0.32s ease-in-out infinite alternate;
+      }
+      .bf.b1 {
+        left: 71.85%;
+        top: 72.08%;
+        width: 7.69%;
+        animation: hover1 5s ease-in-out infinite;
+      }
+      .bf.b2 {
+        left: 25.46%;
+        top: 76.25%;
+        width: 6.76%;
+        animation: hover2 6s ease-in-out infinite;
+      }
+      .bf.b2 img {
+        animation-duration: 0.28s;
+        animation-delay: -0.1s;
+      }
+      .bf.b3 {
+        width: 5.5%;
+        left: -8%;
+        top: 68%;
+        animation: fly 16s linear infinite 2s;
+      }
+      .bf.b3 img {
+        animation-duration: 0.24s;
+        transform: scaleX(-1);
+      }
+      @keyframes flap {
+        from {
+          transform: scale(1, 1);
+        }
+        to {
+          transform: scale(0.55, 0.92) skewY(4deg);
+        }
+      }
+      .bf.b3 img {
+        animation-name: flapR;
+      }
+      @keyframes flapR {
+        from {
+          transform: scale(-1, 1);
+        }
+        to {
+          transform: scale(-0.55, 0.92) skewY(-4deg);
+        }
+      }
+      @keyframes hover1 {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0);
+        }
+        30% {
+          transform: translate(-8%, -10%) rotate(-5deg);
+        }
+        65% {
+          transform: translate(6%, -4%) rotate(4deg);
+        }
+      }
+      @keyframes hover2 {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0);
+        }
+        40% {
+          transform: translate(9%, -12%) rotate(5deg);
+        }
+        70% {
+          transform: translate(-5%, -5%) rotate(-3deg);
+        }
+      }
+      @keyframes fly {
+        0% {
+          left: -8%;
+          top: 70%;
+          transform: rotate(-8deg);
+        }
+        20% {
+          left: 18%;
+          top: 58%;
+          transform: rotate(6deg);
+        }
+        40% {
+          left: 45%;
+          top: 64%;
+          transform: rotate(-6deg);
+        }
+        60% {
+          left: 66%;
+          top: 52%;
+          transform: rotate(8deg);
+        }
+        80% {
+          left: 88%;
+          top: 60%;
+          transform: rotate(-4deg);
+        }
+        100% {
+          left: 108%;
+          top: 50%;
+          transform: rotate(0);
+        }
+      }
+      @keyframes settle {
+        from {
+          transform: scale(1.18);
+        }
+        to {
+          transform: none;
+        }
+      }
+      .cover .wash {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse 46% 26% at 50% 42%,
+          rgba(250, 251, 248, 0.82),
+          rgba(250, 251, 248, 0) 100%
+        );
+      }
+      .cover .text {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 25%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0.15rem;
+        padding-inline: 16px;
+      }
+      .cover .of {
+        font-size: clamp(1.05rem, 4.8vw, 1.4rem);
+        letter-spacing: 0.05em;
+      }
+      .cover .name {
+        font-size: clamp(3.4rem, 17vw, 5.4rem);
+      }
+      .cover .amp {
+        font-size: clamp(1.5rem, 6.5vw, 2.2rem);
+        margin-block: -0.3rem;
+      }
+      .cover .hint {
+        position: absolute;
+        bottom: 2.5%;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-size: 0.8rem;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: #fff;
+        text-shadow: 0 1px 6px rgba(47, 74, 61, 0.7);
+      }
+      .rise {
+        animation: rise 1.4s ease both;
+      }
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(14px);
+          filter: blur(6px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+          filter: none;
+        }
+      }
+      .d1 {
+        animation-delay: 1.6s;
+      }
+      .d2 {
+        animation-delay: 2s;
+      }
+      .d3 {
+        animation-delay: 2.4s;
+      }
+      .d4 {
+        animation-delay: 2.8s;
+      }
+
+      /* date */
+      section {
+        padding: 72px 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 18px;
+      }
+      .invite {
+        font-size: 1.15rem;
+        max-width: 34ch;
+      }
+      .date-card {
+        margin-top: 6px;
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        gap: 16px;
+        width: 100%;
+        max-width: 360px;
+      }
+      .date-card .side {
+        font-size: 0.95rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        border-block: 1px solid var(--line);
+        padding-block: 8px;
+      }
+      .date-card .day {
+        font-family: var(--display);
+        font-size: 5.4rem;
+        line-height: 1;
+        color: var(--rose);
+      }
+      .month {
+        font-size: 1.5rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      /* location */
+      .place {
+        position: relative;
+        padding-block: 96px;
+        gap: 20px;
+        isolation: isolate;
+      }
+      .place::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+        background: url(garden.jpg) center 40% / cover no-repeat;
+      }
+      .place::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: linear-gradient(
+          rgba(244, 246, 241, 0.92),
+          rgba(244, 246, 241, 0.72) 50%,
+          rgba(244, 246, 241, 0.92)
+        );
+      }
+      .pinwrap {
+        width: 56px;
+        height: 72px;
+        position: relative;
+      }
+      .pin {
+        position: absolute;
+        inset: 0;
+        transform: translateY(-60px);
+        opacity: 0;
+        transition:
+          transform 0.9s cubic-bezier(0.3, 1.5, 0.5, 1),
+          opacity 0.3s ease;
+      }
+      .ring {
+        position: absolute;
+        left: 50%;
+        bottom: -4px;
+        width: 34px;
+        height: 10px;
+        margin-left: -17px;
+        border-radius: 50%;
+        background: var(--rose);
+        opacity: 0;
+      }
+      .in-view .pin {
+        transform: none;
+        opacity: 1;
+      }
+      .in-view .ring {
+        animation: pulse 2.4s ease-out 1s infinite;
+      }
+      @keyframes pulse {
+        0% {
+          opacity: 0.6;
+          transform: scale(0.4);
+        }
+        100% {
+          opacity: 0;
+          transform: scale(2.4);
+        }
+      }
+      .venue {
+        font-size: clamp(1.6rem, 7vw, 2.1rem);
+        font-weight: 500;
+        line-height: 1.25;
+        max-width: 20ch;
+        text-wrap: balance;
+      }
+      .btn {
+        display: inline-block;
+        padding: 14px 30px;
+        border: 1px solid var(--ink);
+        background: var(--ink);
+        color: var(--paper);
+        text-decoration: none;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+      .btn:hover {
+        background: var(--blush);
+        border-color: var(--rose);
+        color: var(--ink);
+      }
+      .btn:focus-visible,
+      .pill:focus-visible {
+        outline: 2px solid var(--rose);
+        outline-offset: 3px;
+      }
+
+      footer {
+        padding: 48px 24px 110px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      footer .script {
+        font-size: 2.6rem;
+      }
+
+      /* floating location button */
+      .pill {
+        position: fixed;
+        left: 50%;
+        bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+        transform: translate(-50%, 24px);
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.4s;
+        background: var(--ink);
+        color: var(--paper);
+        text-decoration: none;
+        padding: 12px 22px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        font-weight: 600;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        border-radius: 999px;
+        box-shadow: 0 6px 24px rgba(47, 74, 61, 0.35);
+        z-index: 5;
+      }
+      .pill.show {
+        opacity: 1;
+        transform: translate(-50%, 0);
+        pointer-events: auto;
+      }
+
+
+      .will-reveal {
+        opacity: 0.01;
+        transform: translateY(22px);
+        transition:
+          opacity 1s ease,
+          transform 1s ease;
+      }
+      .will-reveal.shown {
+        opacity: 1;
+        transform: none;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        *,
+        *::before,
+        *::after {
+          animation: none !important;
+          transition: none !important;
+        }
+        .pin {
+          transform: none;
+          opacity: 1;
+        }
+        .will-reveal {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="cover">
+        <div class="scene">
+          <img
+            src="cover.jpg"
+            alt="Garden arch with pink blossoms, a lake and mountains"
+          />
+          <div class="bf b1" aria-hidden="true">
+            <img src="butterfly-1.png" alt="" />
+          </div>
+          <div class="bf b2" aria-hidden="true">
+            <img src="butterfly-2.png" alt="" />
+          </div>
+          <div class="bf b3" aria-hidden="true">
+            <img src="butterfly-2.png" alt="" />
+          </div>
+        </div>
+        <div class="wash"></div>
+        <div class="text">
+          <p class="of rise d1">The Engagement of</p>
+          <h1 class="script name rise d2">Abdullah</h1>
+          <p class="script amp rise d3">&amp;</p>
+          <p class="script name rise d4">Salma</p>
+        </div>
+        <p class="hint rise d4">Scroll</p>
+      </header>
+
+      <section id="date">
+        <p class="eyebrow will-reveal">Save the date</p>
+        <p class="invite will-reveal">
+          Together with their families, Abdullah and Salma invite you to
+          celebrate their engagement.
+        </p>
+        <div class="date-card will-reveal">
+          <span class="side">Saturday</span>
+          <span class="day">31</span>
+          <span class="side">7:00 PM</span>
+        </div>
+        <p class="month will-reveal">October 2026</p>
+      </section>
+
+      <section class="place" id="location">
+        <div class="pinwrap" id="pinwrap" aria-hidden="true">
+          <span class="ring"></span>
+          <svg class="pin" viewBox="0 0 56 72">
+            <path
+              d="M28 72C12 52 4 40 4 28a24 24 0 1 1 48 0c0 12-8 24-24 44z"
+              fill="#e39ab3"
+            />
+            <circle cx="28" cy="28" r="9" fill="#fff" />
+          </svg>
+        </div>
+        <p class="eyebrow will-reveal">Location</p>
+        <h2 class="venue will-reveal" id="venue">
+          Villa St 26, New Maadi, Cairo
+        </h2>
+        <a
+          class="btn will-reveal"
+          id="mapLink"
+          href="#"
+          target="_blank"
+          rel="noopener"
+          >Open in Google Maps</a
+        >
+      </section>
+
+      <footer>
+        <p class="script">Abdullah &amp; Salma</p>
+        <p class="eyebrow">31 . 10 . 2026</p>
+      </footer>
+    </div>
+
+    <audio id="bgm" src="music.mp3" loop autoplay preload="auto"></audio>
+
+    <a class="pill" id="pill" href="#location">
+      <svg width="14" height="18" viewBox="0 0 14 18" aria-hidden="true">
+        <path
+          d="M7 0C3 0 0 3 0 7c0 5 7 11 7 11s7-6 7-11c0-4-3-7-7-7zm0 9.5A2.5 2.5 0 1 1 7 4.5a2.5 2.5 0 0 1 0 5z"
+          fill="currentColor"
+        />
+      </svg>
+      Location
+    </a>
+
+    <script>
+      /* ---- Details to edit ---- */
+      var CONFIG = {
+        venue: "Villa St 26, New Maadi, Cairo",
+        mapsUrl: "https://maps.app.goo.gl/qBj1W3HFbCR57YDv9?g_st=iw",
+        music: "music.mp3",
+      };
+      document.getElementById("venue").textContent = CONFIG.venue;
+      document.getElementById("mapLink").href = CONFIG.mapsUrl;
+
+      /* ---- Background music: plays immediately; if the browser blocks
+         autoplay, the very first tap/click/key starts it with no wait ---- */
+      (function () {
+        var audio = document.getElementById("bgm");
+        var evts = ["pointerdown", "pointerup", "touchend", "click", "keydown", "wheel"];
+        function unbind() {
+          evts.forEach(function (e) {
+            document.removeEventListener(e, kick, true);
+          });
+        }
+        function kick() {
+          if (!audio.paused) return unbind();
+          var p = audio.play();
+          if (p && p.catch) p.catch(function () {});
+        }
+        /* listen from the start, so an early tap is never missed */
+        evts.forEach(function (e) {
+          document.addEventListener(e, kick, true);
+        });
+        audio.addEventListener("playing", unbind);
+        audio.addEventListener("canplay", kick);
+        audio.load();
+        kick();
+      })();
+      /* ---- Scroll reveals, pin drop, floating button ---- */
+      (function () {
+        var items = [].slice.call(document.querySelectorAll(".will-reveal"));
+        var pin = document.getElementById("pinwrap");
+        var vh = window.innerHeight;
+        items.forEach(function (e) {
+          if (e.getBoundingClientRect().top < vh * 0.9)
+            e.classList.add("shown");
+        });
+        if ("IntersectionObserver" in window) {
+          var io = new IntersectionObserver(
+            function (es) {
+              es.forEach(function (x) {
+                if (x.isIntersecting) {
+                  x.target.classList.add(
+                    x.target === pin ? "in-view" : "shown",
+                  );
+                  io.unobserve(x.target);
+                }
+              });
+            },
+            { threshold: 0.25 },
+          );
+          items.concat([pin]).forEach(function (e) {
+            io.observe(e);
+          });
+        } else {
+          items.forEach(function (e) {
+            e.classList.add("shown");
+          });
+          pin.classList.add("in-view");
+        }
+        var pill = document.getElementById("pill"),
+          loc = document.getElementById("location"),
+          locSeen = false;
+        if ("IntersectionObserver" in window) {
+          new IntersectionObserver(
+            function (es) {
+              locSeen = es[0].isIntersecting;
+              upd();
+            },
+            { threshold: 0.15 },
+          ).observe(loc);
+        }
+        function upd() {
+          pill.classList.toggle("show", window.scrollY > 420 && !locSeen);
+        }
+        window.addEventListener("scroll", upd, { passive: true });
+        upd();
+      })();
+    </script>
+  </body>
+</html>
