@@ -513,12 +513,12 @@
         </div>
         <div class="wash"></div>
         <div class="text">
-          <p class="of rise d1">The Engagement of</p>
+          <p class="of rise d1">You're invited to<br />The Engagement of</p>
           <h1 class="script name rise d2">Abdullah</h1>
           <p class="script amp rise d3">&amp;</p>
           <p class="script name rise d4">Salma</p>
         </div>
-        <p class="hint rise d4">Scroll</p>
+        <p class="hint rise d4"></p>
       </header>
 
       <section id="date">
@@ -548,7 +548,7 @@
         </div>
         <p class="eyebrow will-reveal">Location</p>
         <h2 class="venue will-reveal" id="venue">
-          Villa 4 St 26, New Maadi, Cairo
+          Villa 4 St 263, New Maadi, Cairo
         </h2>
         <a
           class="btn will-reveal"
@@ -581,7 +581,7 @@
     <script>
       /* ---- Details to edit ---- */
       var CONFIG = {
-        venue: "Villa 4 St 26, New Maadi, Cairo",
+        venue: "Villa 4 St 263, New Maadi, Cairo",
         mapsUrl: "https://maps.app.goo.gl/qBj1W3HFbCR57YDv9?g_st=iw",
         music: "music.mp3",
       };
@@ -616,6 +616,20 @@
         });
         audio.addEventListener("playing", unbind);
         audio.addEventListener("canplay", kick);
+        /* stop the music when the page is closed, hidden or switched away from */
+        var wasPlaying = false;
+        function stop() {
+          wasPlaying = wasPlaying || !audio.paused;
+          audio.pause();
+        }
+        document.addEventListener("visibilitychange", function () {
+          if (document.hidden) stop();
+          else if (wasPlaying) {
+            wasPlaying = false;
+            kick();
+          }
+        });
+        window.addEventListener("pagehide", stop);
         audio.load();
         kick();
       })();
